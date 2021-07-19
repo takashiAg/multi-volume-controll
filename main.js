@@ -69,11 +69,12 @@ const createWindow = () => {
     resizable: false,
     transparent: true,
     webPreferences: {
-      nodeIntegration: true,
-      preload: `${__dirname}/html/preload.js`,
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: `${__dirname}/preload/preload.js`,
     },
   });
-  window.loadURL("file://" + __dirname + "/html/index.html");
+  window.loadURL("file://" + __dirname + "/dist/index.html");
   window.on("blur", () => {
     // if (!window.webContents.isDevToolsOpened()) {
     window.hide();
